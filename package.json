@@ -11,8 +11,10 @@
     "start": "make run"
   },
   "dependencies": {
+    "concat-stream": "~1.0.0",
     "express": "~3.2.6",
     "express-hbs": "0.2.0",
-    "fours": "~0.0.1"
+    "fours": "~0.0.1",
+    "hyperquest": "~0.1.6"
   }
 }
