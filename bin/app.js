@@ -30,6 +30,6 @@ app.get('/fours/*', function (req, res) {
     }).pipe(res);
 });
 
-var port = process.env.WHEREDAMOVIESAT_PORT || 3000;
+var port = process.env.PORT || 3000;
 console.log('Starting wheredamoviesat on port ' + port);
 app.listen(port);
