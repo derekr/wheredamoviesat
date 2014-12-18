@@ -11,10 +11,13 @@
     "start": "make run"
   },
   "dependencies": {
+    "browserify": "^7.0.2",
     "concat-stream": "~1.0.0",
+    "dotenv": "^0.4.0",
     "express": "~3.2.6",
     "express-hbs": "0.2.0",
     "fours": "~0.0.1",
-    "hyperquest": "~0.1.6"
+    "hyperquest": "~0.1.6",
+    "mapbox.js": "^2.1.4"
   }
 }

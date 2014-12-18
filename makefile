@@ -1,7 +1,17 @@
+build:
+	npm install
+	make js
+
 run:
 	node ./bin/app.js
 
 js:
-	browserify lib/public/main.js > lib/public/bundled.js
+	node_modules/.bin/browserify lib/public/main.js > lib/public/bundled.js
 
-.PHONY: run
+css:
+	cp node_modules/mapbox.js/theme/style.css lib/public/mapbox.css
+
+images:
+	cp -r node_modules/mapbox.js/theme/images lib/public/images
+
+.PHONY: run build

@@ -1,3 +1,4 @@
+require('dotenv').load();
 var path  = require('path');
 var fours = require('fours')(process.env.FOURS_ID, process.env.FOURS_SECRET);
 
