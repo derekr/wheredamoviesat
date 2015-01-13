@@ -11,6 +11,7 @@
     "start": "make run"
   },
   "dependencies": {
+    "async-each": "^0.1.6",
     "browserify": "^7.0.2",
     "concat-stream": "~1.0.0",
     "dotenv": "^0.4.0",
