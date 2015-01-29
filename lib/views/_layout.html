@@ -5,6 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
+    <link href='https://api.tiles.mapbox.com/mapbox.js/plugins/leaflet-label/v0.2.1/leaflet.label.css' rel='stylesheet' />
     <link href='/public/mapbox.css' rel='stylesheet'>
     <!--[if lte IE 8]>
         <link href='http://api.tiles.mapbox.com/mapbox.js/v1.1.0/mapbox.ie.css' rel='stylesheet' />
@@ -22,6 +23,10 @@
     {{{body}}}
     <!-- <div id='map'></div> -->
     <movie-map></movie-map>
+
+    <div class="panel">
+        <movie-list></movie-list>
+    </div>
     <script type='text/javascript' src="public/bundled.js"></script>
   </body>
 </html>

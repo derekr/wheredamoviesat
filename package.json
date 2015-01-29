@@ -11,6 +11,8 @@
     "start": "make run"
   },
   "dependencies": {
+    "amp-difference": "^1.0.1",
+    "array-intersection": "^0.1.1",
     "async-each": "^0.1.6",
     "browserify": "^7.0.2",
     "concat-stream": "~1.0.0",
@@ -19,6 +21,10 @@
     "express-hbs": "0.2.0",
     "fours": "~0.0.1",
     "hyperquest": "~0.1.6",
-    "mapbox.js": "^2.1.4"
+    "leaflet-label": "Leaflet/Leaflet.label",
+    "leaflet-transitionedicon": "^0.2.1",
+    "mapbox.js": "^2.1.4",
+    "plural": "^0.1.6",
+    "sort-on": "^1.0.1"
   }
 }

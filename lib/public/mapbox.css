@@ -808,7 +808,64 @@ movie-map {
 .map-container {
     position: absolute;
     top: 0;
-    right: 0;
+    right: 300px;
     bottom: 0;
     left: 0;
+}
+
+.panel {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #222;
+    width: 300px;
+    font-family: verdana;
+    color: #efefef;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.movie-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 13px;
+}
+
+.movie-list li {
+    border-top: 1px solid #444;
+    backface-visibility: hidden;
+}
+
+.list-item-secondary-text {
+    font-size: 10px;
+    color: #888;
+    display: block;
+}
+
+.theater-marker {
+    background: #fff;
+    border-radius: 2px;
+    font-size: 10px;
+    line-height: 1;
+    padding: 4px;
+}
+
+.list-item-wrapper {
+    padding: 12px;
+    background: #222;
+    transition: transform .2s ease-in-out;
+    cursor: pointer;
+}
+
+.list-item-wrapper:hover,
+.is-selected .list-item-wrapper {
+    transform: translate3d(10px, 0, 0);
+    background: #333;
+}
+
+.movie-stats {
+    padding: 12px;
+    color: #888;
 }
