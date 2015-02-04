@@ -10,6 +10,7 @@
 
     this._markers = [];
     this._ids = [];
+    this._layer = new L.featureGroup();
 
     var self = this;
 
@@ -17,23 +18,12 @@
         L.mapbox.accessToken = 'pk.eyJ1IjoiZHJrIiwiYSI6IlFUU05JNGsifQ.EIbLVgaV2wbCuOJs1FnApQ';
 
         var map = L.mapbox.map(this['map-container'], 'examples.map-zr0njcqy');
+        self._layer.addTo(map);
 
         riotControl.on('locationChanged', function (pos) {
             var center = new L.LatLng(pos.lat, pos.lng);
-            map.setView([center.lat, center.lng], map.getZoom());
+            map.setView([center.lat, center.lng]);
         });
-
-        // riotControl.on('venueAdded', function (venue) {
-        //     if (self._ids.indexOf(venue.id) > -1) return;
-        //
-        //     var marker = L.marker(
-        //         [venue.location.lat, venue.location.lng],
-        //         { riseOnHover: true }
-        //     ).bindLabel(venue.name, { direction: 'auto' });
-        //     marker.venue = venue.id;
-        //     var i = self._ids.push(venue.id);
-        //     self._markers.addLayer(marker);
-        // });
 
         function createMarker (venue) {
             return L.marker(
@@ -61,8 +51,10 @@
             }).map(createMarker);
 
             newMarkers.forEach(function (m) {
-                m.addTo(map);
+                m.addTo(self._layer);
             });
+
+            map.fitBounds(self._layer.getBounds());
 
             self._markers = existing.map(function (id) {
                 var i = self._ids.indexOf(id);

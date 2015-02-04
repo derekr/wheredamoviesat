@@ -808,22 +808,31 @@ movie-map {
 .map-container {
     position: absolute;
     top: 0;
-    right: 300px;
-    bottom: 0;
     left: 0;
+    width: 100%;
+    height: 35vh;
 }
 
 .panel {
     position: absolute;
     right: 0;
-    top: 0;
     bottom: 0;
+    height: 65vh;
+    width: 100%;
     background: #222;
-    width: 300px;
     font-family: verdana;
     color: #efefef;
     overflow-y: scroll;
     overflow-x: hidden;
+    z-index: 1000;
+
+    transition: height .13s cubic-bezier(0.075, 0.82, 0.165, 1),
+                width .13s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+
+.panel.is-loading {
+    width: 100%;
+    height: 100%;
 }
 
 .movie-list {
@@ -868,4 +877,17 @@ movie-map {
 .movie-stats {
     padding: 12px;
     color: #888;
+}
+
+@media (min-width: 400px) {
+    .map-container {
+        height: 100%;
+        right: 300px;
+        width: auto;
+    }
+
+    .panel {
+        height: 100%;
+        width: 300px;
+    }
 }
