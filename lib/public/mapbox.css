@@ -824,6 +824,7 @@ movie-map {
     color: #efefef;
     overflow-y: scroll;
     overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
     z-index: 1000;
 
     transition: height .13s cubic-bezier(0.075, 0.82, 0.165, 1),
