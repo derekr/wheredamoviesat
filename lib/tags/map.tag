@@ -26,10 +26,36 @@
         });
 
         function createMarker (venue) {
-            return L.marker(
+            var m = L.marker(
                 [venue.location.lat, venue.location.lng],
-                { riseOnHover: true }
+                {
+                    riseOnHover: true,
+                    icon: L.mapbox.marker.icon({
+                        'marker-size': 'large',
+                        'marker-symbol': 'cinema',
+                        'marker-color': '#2c80c7'
+                    })
+                }
             ).bindLabel(venue.name, { direction: 'auto' });
+
+            m.on('click', function (e) {
+                self._markers.forEach(function (m) {
+                    m.setIcon(L.mapbox.marker.icon({
+                        'marker-size': 'large',
+                        'marker-symbol': 'cinema',
+                        'marker-color': '#2c80c7'
+                    }));
+                });
+                map.panTo(e.latlng);
+                var marker = e.target;
+                marker.setIcon(L.mapbox.marker.icon({
+                    'marker-size': 'large',
+                    'marker-symbol': 'cinema',
+                    'marker-color': '#333'
+                }));
+            });
+
+            return m;
         }
 
         riotControl.on('venuesChanged', function (venues) {
