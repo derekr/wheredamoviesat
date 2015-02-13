@@ -25,12 +25,50 @@
             map.setView([center.lat, center.lng]);
         });
 
-        function createMarker (venue) {
-            return L.marker(
-                [venue.location.lat, venue.location.lng],
-                { riseOnHover: true }
-            ).bindLabel(venue.name, { direction: 'auto' });
+        function resetMarkers () {
+            self._markers.forEach(function (m) {
+                m.setIcon(L.mapbox.marker.icon({
+                    'marker-size': 'large',
+                    'marker-symbol': 'cinema',
+                    'marker-color': '#2c80c7'
+                }));
+            });
         }
+
+        function createMarker (venue) {
+            var m = L.marker(
+                [venue.location.lat, venue.location.lng],
+                {
+                    riseOnHover: true,
+                    icon: L.mapbox.marker.icon({
+                        'marker-size': 'large',
+                        'marker-symbol': 'cinema',
+                        'marker-color': '#2c80c7'
+                    })
+                }
+            ).bindLabel(venue.name, { direction: 'auto' });
+
+            m.on('click', function (e) {
+                resetMarkers();
+                map.panTo(e.latlng);
+                var marker = e.target;
+
+                marker.setIcon(L.mapbox.marker.icon({
+                    'marker-size': 'large',
+                    'marker-symbol': 'cinema',
+                    'marker-color': '#333'
+                }));
+
+                var i = self._markers.indexOf(marker);
+                riotControl.trigger('venueSelected', self._ids[i]);
+            });
+
+            return m;
+        }
+
+        map.on('click', function () {
+            riotControl.trigger('clearFilter');
+        });
 
         riotControl.on('venuesChanged', function (venues) {
             var newIds = venues.map(function (v) {
@@ -61,6 +99,10 @@
                 return self._markers[i];
             }).concat(newMarkers);
             self._ids = newIds;
+        });
+
+        riotControl.on('movieSelected', function () {
+            resetMarkers();
         });
 
         map.on('dragend', function (e) {

@@ -25,6 +25,8 @@
     "leaflet-transitionedicon": "^0.2.1",
     "mapbox.js": "^2.1.4",
     "plural": "^0.1.6",
+    "riot": "^2.0.9",
+    "riotify": "0.0.7",
     "sort-on": "^1.0.1"
   }
 }
